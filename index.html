@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WASEET - Agent Conductor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Crimson+Pro:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f5f1e8;
+    color: #1a1814;
+    font-family: 'Crimson Pro', Georgia, serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  header {
+    border-bottom: 2px solid #1a1814;
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b6457;
+    margin-top: 8px;
+  }
+  .arabic {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: #1a1814;
+  }
+  .intro {
+    font-style: italic;
+    font-size: 16px;
+    color: #3a3530;
+    margin-bottom: 28px;
+    max-width: 620px;
+  }
+  .input-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+    border: 1px solid #1a1814;
+    background: #fdfbf5;
+  }
+  input[type="text"] {
+    flex: 1;
+    padding: 16px 18px;
+    border: none;
+    background: transparent;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    color: #1a1814;
+    outline: none;
+  }
+  input[type="text"]::placeholder {
+    color: #a89e8a;
+    font-style: italic;
+  }
+  button {
+    background: #1a1814;
+    color: #f5f1e8;
+    border: none;
+    padding: 16px 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.5; cursor: wait; }
+  .examples {
+    margin-bottom: 32px;
+  }
+  .examples-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b6457;
+    margin-bottom: 12px;
+  }
+  .example {
+    display: inline-block;
+    padding: 6px 14px;
+    margin: 0 6px 8px 0;
+    border: 1px solid #d8d2c4;
+    background: transparent;
+    font-size: 13px;
+    font-family: 'Crimson Pro', serif;
+    cursor: pointer;
+    color: #3a3530;
+    transition: all 0.2s;
+  }
+  .example:hover {
+    background: #1a1814;
+    color: #f5f1e8;
+    border-color: #1a1814;
+  }
+  .answer-box {
+    background: #fdfbf5;
+    border-left: 3px solid #1a1814;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    font-size: 16px;
+    line-height: 1.7;
+    display: none;
+  }
+  .answer-box.visible { display: block; }
+  .answer-box h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b6457;
+    font-weight: 500;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+  .answer-box h2:first-child { margin-top: 0; }
+  .answer-box strong { font-weight: 600; }
+  .answer-box a {
+    color: #1a1814;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .answer-box ul { padding-left: 0; list-style: none; }
+  .answer-box li { margin-bottom: 8px; padding-left: 16px; position: relative; }
+  .answer-box li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: #6b6457;
+  }
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b6457;
+  }
+  .loading.visible { display: block; }
+  .loading::after {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #6b6457;
+    border-radius: 50%;
+    margin-left: 8px;
+    animation: pulse 1.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  .error {
+    background: #f9e8e2;
+    border-left: 3px solid #a84848;
+    padding: 16px 24px;
+    color: #5a2424;
+    margin-bottom: 24px;
+    display: none;
+    font-size: 14px;
+  }
+  .error.visible { display: block; }
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid #d8d2c4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b6457;
+    text-align: center;
+  }
+  .fleet-link {
+    color: #6b6457;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .fleet-link:hover { color: #1a1814; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div>
+      <div class="logo">WASEET</div>
+      <div class="tagline">Agent Conductor</div>
+    </div>
+    <div class="arabic">&#1608;&#1587;&#1610;&#1591;</div>
+  </header>
+
+  <p class="intro">
+    One front door to the fleet of 30 AI agents built during the Agentic AI Challenge. Ask anything &mdash; WASEET routes your question to the right agents and synthesizes an answer with source links.
+  </p>
+
+  <div class="input-row">
+    <input
+      type="text"
+      id="query"
+      placeholder="Ask anything..."
+      autocomplete="off"
+    >
+    <button id="ask-btn" onclick="ask()">Ask</button>
+  </div>
+
+  <div class="examples">
+    <div class="examples-label">Try these</div>
+    <span class="example" onclick="setQuery(this)">What is happening with Gaza aid?</span>
+    <span class="example" onclick="setQuery(this)">Any FDA recalls this week?</span>
+    <span class="example" onclick="setQuery(this)">Which agent covers UAE law?</span>
+    <span class="example" onclick="setQuery(this)">Latest on Hormuz?</span>
+    <span class="example" onclick="setQuery(this)">/agents</span>
+    <span class="example" onclick="setQuery(this)">/about</span>
+  </div>
+
+  <div id="loading" class="loading">Routing</div>
+  <div id="error" class="error"></div>
+  <div id="answer" class="answer-box"></div>
+
+  <footer>
+    WASEET &middot; Built on Claude &middot; Agentic AI Challenge 2026
+  </footer>
+
+</div>
+
+<script>
+function setQuery(el) {
+  document.getElementById("query").value = el.textContent;
+  ask();
+}
+
+document.getElementById("query").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") ask();
+});
+
+function renderMarkdown(text) {
+  // Minimal markdown to HTML conversion - safe, no external library
+  let html = text;
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  // Headers (just the **Answer**, **Sources**, **Want deeper coverage?** style)
+  html = html.replace(/^<strong>(Answer|Sources|Want deeper coverage\?)<\/strong>$/gm, "<h2>$1</h2>");
+  // Links - markdown style [text](url)
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  // Plain URLs
+  html = html.replace(/(^|[^"=])(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  // Bullet lines (- at start of line)
+  html = html.replace(/^- (.+)$/gm, "<li>$1</li>");
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, function(m) { return "<ul>" + m + "</ul>"; });
+  // Paragraphs
+  html = html.split(/\n\n+/).map(function(p) {
+    if (p.startsWith("<h2>") || p.startsWith("<ul>")) return p;
+    return "<p>" + p.replace(/\n/g, "<br>") + "</p>";
+  }).join("\n");
+  return html;
+}
+
+async function ask() {
+  const queryInput = document.getElementById("query");
+  const query = queryInput.value.trim();
+  if (!query) return;
+
+  const askBtn = document.getElementById("ask-btn");
+  const loading = document.getElementById("loading");
+  const error = document.getElementById("error");
+  const answer = document.getElementById("answer");
+
+  askBtn.disabled = true;
+  loading.classList.add("visible");
+  error.classList.remove("visible");
+  answer.classList.remove("visible");
+
+  try {
+    const res = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: query })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Request failed");
+    }
+
+    answer.innerHTML = renderMarkdown(data.answer);
+    answer.classList.add("visible");
+  } catch (err) {
+    error.textContent = "Error: " + err.message;
+    error.classList.add("visible");
+  } finally {
+    askBtn.disabled = false;
+    loading.classList.remove("visible");
+  }
+}
+</script>
+
+</body>
+</html>
