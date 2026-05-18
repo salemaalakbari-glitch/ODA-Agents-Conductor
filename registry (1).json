@@ -1,0 +1,470 @@
+{
+  "registry_version": "2.0",
+  "last_updated": "2026-05-17",
+  "description": "WASEET agent registry. Each agent represents an AI agent built by a colleague during the Agentic AI Challenge. WASEET uses this registry to route incoming queries to the right agent(s) and synthesize answers.",
+  "agents": [
+    {
+      "id": "devobrief",
+      "name": "DevoBrief",
+      "tagline": "Weekly intelligence brief on global development affairs",
+      "covers": ["philanthropic capital", "multilateral institutions", "climate finance", "humanitarian funding", "innovation finance", "global development", "donor wires", "ODA"],
+      "audience": "development professionals, policy advisors",
+      "language": "EN",
+      "cadence": "weekly (Sun 23:00 GST)",
+      "format": "executive brief",
+      "access": {
+        "type": "public_web",
+        "web": "https://devobrief.netlify.app/",
+        "telegram": "https://t.me/DevoBrief",
+        "fetch_url": "https://devobrief.netlify.app/"
+      },
+      "routing_keywords": ["development", "philanthropy", "donor", "humanitarian funding", "climate finance", "multilateral", "UNDP", "World Bank", "Gates", "MacArthur", "ODA"]
+    },
+    {
+      "id": "agent_daddy",
+      "name": "Agent Daddy",
+      "tagline": "Takes AI agents and outputs improved versions",
+      "covers": ["agent improvement", "prompt engineering", "agent design"],
+      "audience": "agent builders",
+      "language": "EN",
+      "cadence": "on-demand",
+      "format": "interactive workbench",
+      "access": {
+        "type": "public_web",
+        "web": "https://agent-daddy.vercel.app/workbench"
+      },
+      "routing_keywords": ["improve agent", "agent design", "prompt", "agent feedback", "make agent better"]
+    },
+    {
+      "id": "emirati_academia",
+      "name": "Emirati Academia in Focus",
+      "tagline": "Translates UAE academic research into policymaker briefs",
+      "covers": ["UAE academic research", "NYU Abu Dhabi social science", "research-to-policy translation"],
+      "audience": "UAE policymakers, government officials",
+      "language": "EN",
+      "cadence": "monthly",
+      "format": "newsletter",
+      "access": {
+        "type": "telegram",
+        "telegram": "Emirati Academia in Focus channel"
+      },
+      "routing_keywords": ["UAE research", "academic", "university research", "NYUAD", "social science research", "scholar", "publication"]
+    },
+    {
+      "id": "nabd",
+      "name": "Nabd (نبض)",
+      "tagline": "Bilingual AI platform for UAE social-sector decisions",
+      "covers": ["UAE social sector", "community issues", "policy simulation", "social indices", "program design", "OECD/GCC benchmarks"],
+      "audience": "ministry officials, social policy decision-makers",
+      "language": "EN+AR",
+      "cadence": "real-time (refresh every 6h, weekly autonomous run)",
+      "format": "interactive workspace + executive briefings",
+      "access": {
+        "type": "platform",
+        "notes": "bilingual workspace with 4 modules: Community Radar, Social Indices, Policy Simulator, Program Designer"
+      },
+      "routing_keywords": ["social policy", "UAE indicators", "community issue", "policy simulation", "program design", "ministry", "social sector", "OECD comparison"]
+    },
+    {
+      "id": "investment_trends",
+      "name": "Global Investment Trends",
+      "tagline": "Weekly capital-flow thesis from Fed + ETF + financial news data",
+      "covers": ["global capital flows", "asset class trends", "Fed policy", "ETF markets", "investment thesis"],
+      "audience": "investment professionals, finance teams",
+      "language": "EN",
+      "cadence": "weekly (Fri 08:00 GST)",
+      "format": "structured investment thesis",
+      "access": {
+        "type": "teams_channel",
+        "notes": "Microsoft Teams channel; not publicly accessible"
+      },
+      "routing_keywords": ["investment", "capital flows", "Fed", "ETF", "market trends", "asset allocation", "macroeconomic"]
+    },
+    {
+      "id": "decisionlens",
+      "name": "UAE DecisionLens",
+      "tagline": "Sovereign decision intelligence — pre-implementation policy impact briefs",
+      "covers": ["UAE strategic decisions", "policy impact assessment", "strategic foresight", "trend detection"],
+      "audience": "UAE government decision-makers, policy advisors",
+      "language": "EN+AR",
+      "cadence": "twice weekly (foresight engine)",
+      "format": "Decision Impact Brief (bilingual)",
+      "access": {
+        "type": "public_web",
+        "web": "https://uae-decisionlens.streamlit.app",
+        "fetch_url": "https://uae-decisionlens.streamlit.app"
+      },
+      "routing_keywords": ["UAE policy decision", "strategic foresight", "policy impact", "implementation risk", "stakeholder impact", "UAE trends"]
+    },
+    {
+      "id": "initiative_radar",
+      "name": "InitiativeRadar",
+      "tagline": "Monthly briefing on philanthropy × social impact × emerging tech",
+      "covers": ["philanthropy initiatives", "social impact tech", "emerging tech for good", "Watch Ratings"],
+      "audience": "philanthropy professionals, impact investors",
+      "language": "EN",
+      "cadence": "monthly (1st of month)",
+      "format": "structured briefing with Watch Ratings",
+      "access": {
+        "type": "private_email",
+        "notes": "delivered via email; not publicly accessible"
+      },
+      "routing_keywords": ["philanthropy initiative", "social impact tech", "emerging tech", "impact investing", "Watch Rating"]
+    },
+    {
+      "id": "infra_tech_healthcare",
+      "name": "Infra Tech Healthcare Alert",
+      "tagline": "Healthcare infrastructure construction, renovation, regulation updates",
+      "covers": ["hospital construction", "healthcare facility renovation", "demolition", "healthcare engineering", "AIA/FGI/WHO standards"],
+      "audience": "healthcare engineers, facility planners, project managers",
+      "language": "EN",
+      "cadence": "daily",
+      "format": "Telegram updates",
+      "access": {
+        "type": "telegram",
+        "telegram": "https://t.me/HealthInfraAlert",
+        "fetch_url": "https://t.me/s/HealthInfraAlert"
+      },
+      "routing_keywords": ["hospital construction", "healthcare facility", "healthcare infrastructure", "AIA", "FGI", "healthcare engineering", "facility management"]
+    },
+    {
+      "id": "faheem",
+      "name": "Faheem",
+      "tagline": "Strategic communications and reputation management assistant",
+      "covers": ["press releases", "executive summaries", "media briefs", "social media content", "messaging frameworks", "communication plans"],
+      "audience": "comms teams, press officers",
+      "language": "EN+AR",
+      "cadence": "on-demand",
+      "format": "various comms outputs",
+      "access": {
+        "type": "telegram_private",
+        "notes": "private OpenClaw agent on Hostinger; access by invitation"
+      },
+      "routing_keywords": ["press release", "media brief", "communication plan", "talking points", "reputation", "comms strategy", "official statement"]
+    },
+    {
+      "id": "medtech_safety",
+      "name": "MedTech Safety Alert",
+      "tagline": "Daily FDA medical equipment safety alerts",
+      "covers": ["FDA medical device recalls", "equipment safety alerts", "medical device malfunctions", "regulatory compliance"],
+      "audience": "biomedical teams, clinical engineers, hospital safety officers",
+      "language": "EN",
+      "cadence": "daily (09:00)",
+      "format": "Telegram alerts",
+      "access": {
+        "type": "telegram",
+        "telegram": "https://t.me/MedTechAlert",
+        "fetch_url": "https://t.me/s/MedTechAlert"
+      },
+      "routing_keywords": ["FDA recall", "medical device", "equipment safety", "biomedical", "hospital safety", "device alert", "recall"]
+    },
+    {
+      "id": "vectorshift",
+      "name": "VectorShift Alert Bot",
+      "tagline": "Climate-sensitive vector-borne disease outbreak alerts",
+      "covers": ["vector-borne diseases", "outbreak monitoring", "climate-health intersections", "endemic-risk baselines"],
+      "audience": "public health, epidemiologists, climate-health analysts",
+      "language": "EN",
+      "cadence": "daily",
+      "format": "WhatsApp/Telegram alerts",
+      "access": {
+        "type": "bot",
+        "notes": "WhatsApp/Telegram bot via n8n on VPS"
+      },
+      "routing_keywords": ["vector-borne", "outbreak", "epidemic", "malaria", "dengue", "climate health", "disease surveillance"]
+    },
+    {
+      "id": "senior_connect",
+      "name": "SeniorConnect AD",
+      "tagline": "Social connection platform for Abu Dhabi seniors and retirees",
+      "covers": ["senior wellness", "retiree community", "walking groups", "majlis gatherings", "Emirati cultural fit"],
+      "audience": "Abu Dhabi seniors, families of seniors",
+      "language": "EN+AR",
+      "cadence": "ongoing",
+      "format": "WhatsApp service",
+      "access": {
+        "type": "whatsapp",
+        "notes": "Render-hosted, Twilio WhatsApp integration"
+      },
+      "routing_keywords": ["senior", "retiree", "elderly", "wellness Abu Dhabi", "walking group", "majlis", "social connection"]
+    },
+    {
+      "id": "oda_media_kit_workflow",
+      "name": "ODA Media Kit (Workflow)",
+      "tagline": "Bilingual press releases via n8n workflow",
+      "covers": ["Arabic press releases", "English press releases", "social media captions", "WAM-style publishing"],
+      "audience": "media teams, communication departments",
+      "language": "EN+AR",
+      "cadence": "on-demand",
+      "format": "complete media package",
+      "access": {
+        "type": "webhook",
+        "web": "https://n8n.srv1662402.hstgr.cloud/webhook/8102afb1-5122-4872-8a33-5e039236724a/chat"
+      },
+      "routing_keywords": ["press release", "WAM style", "Arabic press release", "social media caption", "media kit", "بيان صحفي"]
+    },
+    {
+      "id": "dalila",
+      "name": "Dalila (دليلة)",
+      "tagline": "Daily development news digest — 200+ sources, prediction markets, country-tagged",
+      "covers": ["international development news", "UAE foreign policy signals", "humanitarian crises", "aid commitments", "multilateral reports", "prediction markets"],
+      "audience": "development professionals, foreign policy, UAE ecosystem",
+      "language": "EN",
+      "cadence": "daily (06:30 GST) + real-time breaking",
+      "format": "daily digest + breaking alerts",
+      "access": {
+        "type": "public_web",
+        "web": "https://aryfcunha.github.io/dalila/",
+        "telegram": "https://t.me/dalila_development_digest_bot",
+        "github": "https://github.com/aryfcunha/dalila",
+        "fetch_url": "https://aryfcunha.github.io/dalila/"
+      },
+      "routing_keywords": ["development news", "UAE foreign policy", "humanitarian crisis", "aid commitment", "ceasefire", "UN news", "donor news", "prediction market"]
+    },
+    {
+      "id": "aidroute_watch",
+      "name": "AidRoute Watch",
+      "tagline": "Humanitarian logistics monitoring — disasters affecting aid supply chains",
+      "covers": ["humanitarian disasters", "GDACS alerts", "port/border disruptions", "supply chain impact on aid", "20+ priority countries"],
+      "audience": "humanitarian logistics, aid operations, supply chain",
+      "language": "EN",
+      "cadence": "every 4 hours",
+      "format": "Telegram alerts",
+      "access": {
+        "type": "telegram",
+        "telegram": "https://t.me/AidRouteWatch",
+        "fetch_url": "https://t.me/s/AidRouteWatch"
+      },
+      "routing_keywords": ["GDACS", "disaster alert", "humanitarian logistics", "supply chain disruption", "port closure", "aid delivery", "natural disaster"]
+    },
+    {
+      "id": "mizan",
+      "name": "Mizan (ميزان)",
+      "tagline": "AI agent auditor — scores and improves other agents",
+      "covers": ["agent auditing", "agent quality assessment", "prompt improvement", "agent benchmarking"],
+      "audience": "agent builders, AI product managers",
+      "language": "EN",
+      "cadence": "on-demand",
+      "format": "structured audit report with paste-ready upgrades",
+      "access": {
+        "type": "platform",
+        "notes": "private link"
+      },
+      "routing_keywords": ["audit agent", "evaluate agent", "agent score", "agent quality", "agent benchmark", "improve prompt"]
+    },
+    {
+      "id": "awni",
+      "name": "Awni (عوني)",
+      "tagline": "WhatsApp assistant for UAE elderly — dialect-aware, warm guidance",
+      "covers": ["UAE government services", "emergency numbers", "appointment booking", "daily guidance for elderly", "Arabic dialect support"],
+      "audience": "elderly UAE residents, families of elderly",
+      "language": "EN+AR (dialect-aware)",
+      "cadence": "on-demand",
+      "format": "WhatsApp chat",
+      "access": {
+        "type": "whatsapp",
+        "notes": "hosted on Base44 Superagent platform"
+      },
+      "routing_keywords": ["elderly", "senior assistance", "UAE government services", "emergency", "appointment booking", "Arabic dialect", "كبار السن"]
+    },
+    {
+      "id": "law_update",
+      "name": "Law Update",
+      "tagline": "UAE legislative radar for government legal advisors",
+      "covers": ["UAE federal legislation", "Abu Dhabi local legislation", "NGO regulation", "AML/CFT", "federal procurement", "constitutional affairs", "development assistance compliance"],
+      "audience": "government legal advisors, compliance officers",
+      "language": "EN",
+      "cadence": "on-demand (weekly automation planned)",
+      "format": "compliance briefing with priority action items",
+      "access": {
+        "type": "claude_project",
+        "notes": "Claude.ai project with live web search"
+      },
+      "routing_keywords": ["UAE law", "legislation", "federal decree", "Abu Dhabi law", "compliance", "AML", "CFT", "NGO regulation", "legal advisor", "gazette"]
+    },
+    {
+      "id": "uae_tech_ai_daily",
+      "name": "UAE Tech & AI Daily Briefing",
+      "tagline": "Daily intelligence briefing on UAE tech and AI developments",
+      "covers": ["UAE technology news", "UAE AI developments", "tech trends with UAE angle", "actionable tech opportunities"],
+      "audience": "UAE tech professionals, AI strategists, innovation teams",
+      "language": "EN",
+      "cadence": "daily (07:00 GST) + on-demand",
+      "format": "structured web dashboard briefing",
+      "access": {
+        "type": "public_web",
+        "web": "https://uae-tech-ai-briefing.onrender.com",
+        "fetch_url": "https://uae-tech-ai-briefing.onrender.com"
+      },
+      "routing_keywords": ["UAE tech", "UAE AI", "UAE innovation", "tech news UAE", "AI news UAE", "MGX", "G42", "TII"]
+    },
+    {
+      "id": "global_risk",
+      "name": "Global Risk",
+      "tagline": "Daily executive report on global conflict, geopolitics, UAE/GCC relevance",
+      "covers": ["global conflict", "geopolitical risk", "markets", "trade", "shipping chokepoints", "energy risks", "UAE/GCC relevance"],
+      "audience": "executives, geopolitical analysts, risk officers",
+      "language": "EN",
+      "cadence": "daily (08:00 GST)",
+      "format": "leadership-ready PDF report",
+      "access": {
+        "type": "whatsapp",
+        "notes": "delivered via WhatsApp through OpenClaw"
+      },
+      "routing_keywords": ["geopolitical risk", "global conflict", "Hormuz", "Red Sea", "energy risk", "shipping chokepoints", "GCC risk", "trade disruption"]
+    },
+    {
+      "id": "reading_room",
+      "name": "The Reading Room",
+      "tagline": "Turns books, research, and reports into strategic insights and quick wins",
+      "covers": ["book summaries with policy implications", "research-to-action translation", "executive briefings on long-form content", "weekend curated reads"],
+      "audience": "executives, policy professionals, leadership",
+      "language": "EN",
+      "cadence": "on-demand + weekly (Saturday Weekend Read)",
+      "format": "strategic insights with leadership-ready summaries",
+      "access": {
+        "type": "custom_gpt",
+        "web": "https://chatgpt.com/g/g-6a09e17858288191afb0bf1a6ea5b5bd-the-reading-room"
+      },
+      "routing_keywords": ["book summary", "research paper", "report summary", "weekend read", "executive briefing", "long-form content", "policy implications"]
+    },
+    {
+      "id": "guest_intel",
+      "name": "GUEST.INTEL",
+      "tagline": "Full VIP dossier on any guest in under 5 minutes",
+      "covers": ["VIP profiling", "executive briefing on individuals", "protocol guidance", "stakeholder intelligence", "bilingual dossier with audio"],
+      "audience": "protocol officers, executive assistants, hosts of high-level meetings",
+      "language": "EN+AR",
+      "cadence": "on-demand",
+      "format": "executive brief, slide, infographic, EN/AR voice narration",
+      "access": {
+        "type": "public_web",
+        "notes": "Vercel-deployed Next.js app with streaming"
+      },
+      "routing_keywords": ["VIP dossier", "guest profile", "executive briefing person", "protocol", "stakeholder research", "biography", "meeting prep"]
+    },
+    {
+      "id": "gcc_signal_tracker",
+      "name": "GCC Signal Tracker",
+      "tagline": "Material developments — Hormuz, Iran nuclear, GCC sovereign capital",
+      "covers": ["Strait of Hormuz maritime activity", "Iran nuclear file", "GCC sovereign capital deployments", "principal-level materiality filtering"],
+      "audience": "geopolitical analysts, sovereign fund operators, GCC executives",
+      "language": "EN",
+      "cadence": "every 4 hours",
+      "format": "structured Telegram alerts with confidence rating",
+      "access": {
+        "type": "telegram",
+        "notes": "Telegram alerts via Make.com workflow"
+      },
+      "routing_keywords": ["Hormuz", "Iran nuclear", "GCC sovereign", "PIF", "Mubadala", "ADQ", "QIA", "sovereign capital", "maritime"]
+    },
+    {
+      "id": "oda_media_kit_platform",
+      "name": "ODA Media Kit Platform",
+      "tagline": "Unified media operations workspace — strategy, planning, PR, content, monitoring",
+      "covers": ["media strategy", "digital media planning", "PR and communications", "press release generation", "content production", "sentiment monitoring"],
+      "audience": "media teams, comms departments, institutional PR",
+      "language": "EN+AR",
+      "cadence": "on-demand",
+      "format": "multi-module media platform",
+      "access": {
+        "type": "public_web",
+        "web": "https://odamediakit.lovable.app",
+        "fetch_url": "https://odamediakit.lovable.app"
+      },
+      "routing_keywords": ["media strategy", "digital media plan", "PR plan", "press release", "content production", "media monitoring", "sentiment analysis"]
+    },
+    {
+      "id": "aine",
+      "name": "AINE (UAE Aid Intelligence & Narrative Engine)",
+      "tagline": "Strategic humanitarian communications and intelligence for UAE ecosystem",
+      "covers": ["humanitarian narrative analysis", "UAE positioning opportunities", "diplomatic storytelling", "media engagement strategy", "sustainability/development trends"],
+      "audience": "UAE humanitarian/development comms teams, diplomatic comms",
+      "language": "EN+AR",
+      "cadence": "real-time",
+      "format": "strategic reports, communication recommendations",
+      "access": {
+        "type": "platform",
+        "notes": "platform-hosted"
+      },
+      "routing_keywords": ["UAE humanitarian narrative", "diplomatic storytelling", "aid communications", "UAE positioning", "humanitarian intelligence", "sustainability narrative"]
+    },
+    {
+      "id": "mirsad",
+      "name": "Mirsad (مرصد)",
+      "tagline": "Three AI agents catching behavioural design in policy, products, and evidence",
+      "covers": ["behavioural design", "dark patterns in products", "behavioural nudges in policy", "behavioural science findings", "bilingual EN/AR coverage"],
+      "audience": "policy professionals, product designers, behavioural science community",
+      "language": "EN+AR",
+      "cadence": "ongoing (3 independent agents on cron)",
+      "format": "open public feed",
+      "access": {
+        "type": "public_web",
+        "web": "https://aljailanir-prog.github.io/mirsad/",
+        "github": "https://github.com/aljailanir-prog/mirsad",
+        "fetch_url": "https://aljailanir-prog.github.io/mirsad/"
+      },
+      "routing_keywords": ["behavioural design", "dark patterns", "nudge", "behavioural science", "policy nudges", "product design", "user psychology"]
+    },
+    {
+      "id": "manarah",
+      "name": "Manarah",
+      "tagline": "Strategic proposal advisor — leadership-ready assessment of business proposals",
+      "covers": ["business proposal evaluation", "partnership assessment", "strategic alignment scoring", "credibility checks", "feasibility analysis", "risk assessment"],
+      "audience": "executives evaluating partnerships, strategy teams, investment committees",
+      "language": "EN",
+      "cadence": "on-demand",
+      "format": "structured assessment with recommendation",
+      "access": {
+        "type": "custom_gpt",
+        "web": "https://chatgpt.com/g/g-6a09ec5d9900819182c6e5dfbdbb99f0-manarah-strategic-proposal-advisor"
+      },
+      "routing_keywords": ["proposal evaluation", "partnership assessment", "strategic alignment", "feasibility study", "business proposal", "investment decision", "engagement evaluation"]
+    },
+    {
+      "id": "event_scopeguard",
+      "name": "Event ScopeGuard",
+      "tagline": "AI change control for events — flags impact of last-minute requests",
+      "covers": ["event operations", "protocol changes", "guest list changes", "security and transport impact", "catering and accreditation", "protocol tier recognition"],
+      "audience": "event organizers, protocol teams, government event ops",
+      "language": "EN",
+      "cadence": "real-time (per-event WhatsApp)",
+      "format": "impact report via WhatsApp",
+      "access": {
+        "type": "whatsapp",
+        "notes": "Twilio sandbox WhatsApp number per event, n8n workflow"
+      },
+      "routing_keywords": ["event change", "protocol", "VIP added", "event operations", "guest list change", "event risk", "accreditation", "event planning"]
+    },
+    {
+      "id": "bidradar",
+      "name": "BidRadar",
+      "tagline": "Autonomous monitoring of global mega-event bids (BIE, Olympics, FIFA)",
+      "covers": ["mega-event bids", "Olympics bids", "FIFA bids", "BIE Expo bids", "bid voting and withdrawals", "corruption allegations", "delivery updates"],
+      "audience": "sports/events policy, bid teams, sports business analysts",
+      "language": "EN (monitors 9 languages)",
+      "cadence": "daily (07:00 GST)",
+      "format": "Telegram digest",
+      "access": {
+        "type": "telegram",
+        "notes": "Render-hosted, Telegram delivery"
+      },
+      "routing_keywords": ["Olympics bid", "FIFA bid", "BIE Expo", "mega-event", "host city bid", "bid voting", "World Cup bid", "Expo bid"]
+    },
+    {
+      "id": "khairbot",
+      "name": "KhairBot (خير)",
+      "tagline": "Urgent UAE charity campaigns and humanitarian updates newsletter",
+      "covers": ["UAE-licensed charity campaigns", "humanitarian appeals", "verified causes", "donation discovery"],
+      "audience": "UAE donors, philanthropists, individuals seeking verified causes",
+      "language": "EN+AR",
+      "cadence": "ongoing newsletter",
+      "format": "aggregated newsletter",
+      "access": {
+        "type": "newsletter",
+        "notes": "n8n + Claude + Gemini pipeline"
+      },
+      "routing_keywords": ["UAE charity", "donate", "humanitarian appeal", "charity campaign", "khair", "Emirates Red Crescent", "verified cause", "صدقة", "تبرع"]
+    }
+  ]
+}

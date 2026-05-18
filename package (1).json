@@ -1,0 +1,8 @@
+{
+  "name": "waseet-web",
+  "version": "1.0.0",
+  "description": "WASEET - Agent Conductor (web version)",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  }
+}
